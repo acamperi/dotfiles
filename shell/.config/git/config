@@ -3,7 +3,6 @@
     email = ariel.camperi@level.com
 [core]
     editor = vim
-    excludesfile = ~/.gitignore
 [alias]
     c = commit
     co = checkout
