@@ -78,6 +78,13 @@ abbr -a wip 'git add .; git commit -m "WIP"'
 abbr -a awip 'git add .; git commit --amend -m "WIP"'
 
 
+###########################
+### other abbreviations ###
+###########################
+abbr -a brewup 'brew update; and brew upgrade; and brew cleanup -s'
+abbr -a xcodeclean 'rm -frd ~/Library/Developer/Xcode/DerivedData/*; and rm -frd ~/Library/Caches/com.apple.dt.Xcode/*'
+
+
 #####################################
 ### get to the root of a git repo ###
 #####################################
