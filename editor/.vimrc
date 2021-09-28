@@ -131,6 +131,8 @@ onoremap al( :<c-u>normal! F)va(<cr>
 nnoremap n nzz
 nnoremap N Nzz
 nnoremap <leader>/ :let @/ = ""<cr>
+nnoremap / /\v
+nnoremap ? ?\v
 
 " NERDTree
 nnoremap <leader>n :NERDTreeFocus<cr>
