@@ -1,3 +1,35 @@
+"""""""""""""
+""" Shell """
+"""""""""""""
+
+set shell=/bin/zsh
+
+
+"""""""""""""""
+""" Leaders """
+"""""""""""""""
+
+let mapleader = ","
+let maplocalleader = "\\"
+
+
+"""""""""""""""
+""" Plugins """
+"""""""""""""""
+
+call plug#begin(has('nvim') ? stdpath('data') . '/plugged' : '~/.vim/plugged')
+
+Plug 'fatih/vim-go'
+Plug 'hashivim/vim-terraform'
+Plug 'preservim/nerdtree'
+Plug 'sjl/vitality.vim'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-obsession'
+Plug 'uarun/vim-protobuf'
+
+call plug#end()
+
+
 """"""""""""""""""""""""
 """ General Settings """
 """"""""""""""""""""""""
@@ -85,14 +117,6 @@ if has('persistent_undo')
     set undofile
     set undodir=~/.config/vim/tmp/undo//
 endif
-
-
-"""""""""""""""
-""" Leaders """
-"""""""""""""""
-
-let mapleader = ","
-let maplocalleader = "\\"
 
 
 """"""""""""""""
