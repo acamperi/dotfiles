@@ -21,6 +21,8 @@ call plug#begin(has('nvim') ? stdpath('data') . '/plugged' : '~/.vim/plugged')
 
 Plug 'fatih/vim-go'
 Plug 'hashivim/vim-terraform'
+Plug '/usr/local/opt/fzf'
+Plug 'junegunn/fzf.vim'
 Plug 'preservim/nerdtree'
 Plug 'sjl/vitality.vim'
 Plug 'tpope/vim-fugitive'
@@ -163,6 +165,10 @@ nnoremap <leader>n :NERDTreeFocus<cr>
 nnoremap <c-n> :NERDTree<cr>
 nnoremap <c-t> :NERDTreeToggle<cr>
 nnoremap <c-f> :NERDTreeFind<cr>
+
+" FZF
+nnoremap <leader>o :Files<cr>
+nnoremap <leader>f :Rg<cr>
 
 " matching brackets
 " inoremap {<cr> {<cr>}<esc>ko<tab>
