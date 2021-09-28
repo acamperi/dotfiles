@@ -103,10 +103,6 @@ let maplocalleader = "\\"
 nnoremap <leader>- ddp
 nnoremap <leader>= ddkP
 
-" uppercase
-nnoremap <c-u> viwU
-inoremap <c-u> <esc>viwUi
-
 " edit/source vimrc
 nnoremap <leader>ev :vsplit $MYVIMRC<cr>
 nnoremap <leader>sv :source $MYVIMRC<cr>
