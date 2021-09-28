@@ -40,6 +40,7 @@ set virtualedit=onemore
 set backspace=indent,eol,start
 set completeopt=menu,menuone
 set pumheight=10
+set clipboard=unnamed
 
 
 """""""""""""""""""""
