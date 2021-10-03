@@ -29,6 +29,8 @@ Plug 'sjl/vitality.vim'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-obsession'
 Plug 'uarun/vim-protobuf'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 
 call plug#end()
 
@@ -109,6 +111,9 @@ set statusline+=%h%w%m%r\   " Buffer status flags
 set statusline+=%=          " Switch to the right side
 set statusline+=\ %y\       " File type
 set statusline+=%l:%c%V     " Current line and column(s)
+let g:airline_theme = 'simple'
+let g:airline_powerline_fonts = 1
+set noshowmode
 
 
 """"""""""""
