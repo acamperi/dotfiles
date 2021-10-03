@@ -26,6 +26,7 @@ Plug '/usr/local/opt/fzf'
 Plug 'junegunn/fzf.vim'
 Plug 'preservim/nerdtree'
 Plug 'sjl/vitality.vim'
+Plug 'srcery-colors/srcery-vim'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-obsession'
 Plug 'uarun/vim-protobuf'
@@ -254,8 +255,10 @@ if !exists("g:syntax_on")
 endif
 
 set background=dark
-let g:oceanic_material_background = 'deep'
-colorscheme oceanic_material
+let g:srcery_italic = 1
+colorscheme srcery
+set t_ZH=[3m
+set t_ZR=[23m
 
 
 """"""""""""""
