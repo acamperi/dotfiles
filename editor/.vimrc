@@ -173,7 +173,8 @@ nnoremap <leader>nt :NERDTreeToggle<cr>
 nnoremap <leader>nf :NERDTreeFind<cr>
 
 " FZF
-nnoremap <leader>o :Files<cr>
+nnoremap <leader>o :GFiles<cr>
+nnoremap <leader>O :Files<cr>
 nnoremap <leader>f :Rg<cr>
 
 " matching brackets
