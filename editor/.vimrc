@@ -163,9 +163,9 @@ nnoremap ? ?\v
 
 " NERDTree
 nnoremap <leader>n :NERDTreeFocus<cr>
-nnoremap <c-n> :NERDTree<cr>
-nnoremap <c-t> :NERDTreeToggle<cr>
-nnoremap <c-f> :NERDTreeFind<cr>
+nnoremap <leader>nn :NERDTree<cr>
+nnoremap <leader>nt :NERDTreeToggle<cr>
+nnoremap <leader>nf :NERDTreeFind<cr>
 
 " FZF
 nnoremap <leader>o :Files<cr>
@@ -205,6 +205,8 @@ augroup nerdtree
     autocmd VimEnter * NERDTree | if argc() > 0 || exists("s:std_in") | wincmd p | endif
     autocmd BufEnter * if winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
 augroup END
+let NERDTreeShowHidden = 1
+let NERDTreeIgnore = ['\.git']
 
 
 """"""""""""""""""""""""""""""""""
