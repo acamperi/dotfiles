@@ -130,6 +130,7 @@ set -g __fish_git_prompt_showdirtystate true
 set -g __fish_git_prompt_showstashstate false
 set -g __fish_git_prompt_showupstream 'none'
 function fish_prompt
+    printf "\x1b]1337;CursorShape=1\x7"
     set_color red
     printf '%s ' (fish_git_prompt)
     set_color --bold yellow
