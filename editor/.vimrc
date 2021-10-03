@@ -9,7 +9,8 @@ set shell=/bin/zsh
 """ Leaders """
 """""""""""""""
 
-let mapleader = ","
+nnoremap <space> <nop>
+let mapleader = " "
 let maplocalleader = "\\"
 
 
