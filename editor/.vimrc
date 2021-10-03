@@ -131,6 +131,15 @@ endif
 """ Mappings """
 """"""""""""""""
 
+" file operations
+nnoremap <leader>w :w<cr>
+
+" window operations
+nnoremap <leader>h <c-w>h
+nnoremap <leader>j <c-w>j
+nnoremap <leader>k <c-w>k
+nnoremap <leader>l <c-w>l
+
 " move lines up and down
 nnoremap <leader>- ddp
 nnoremap <leader>= ddkP
