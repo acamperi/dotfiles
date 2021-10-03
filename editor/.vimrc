@@ -19,7 +19,7 @@ let maplocalleader = "\\"
 
 call plug#begin(has('nvim') ? stdpath('data') . '/plugged' : '~/.vim/plugged')
 
-Plug 'fatih/vim-go'
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'hashivim/vim-terraform'
 Plug '/usr/local/opt/fzf'
 Plug 'junegunn/fzf.vim'
