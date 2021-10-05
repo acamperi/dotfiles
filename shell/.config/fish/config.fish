@@ -38,6 +38,13 @@ set -gx PATH ~/bin $PATH
 set -gx PATH ~/.local/bin $PATH
 
 
+##############
+### editor ###
+##############
+
+set -gx EDITOR vim
+
+
 ########################
 ### ls abbreviations ###
 ########################
