@@ -26,7 +26,6 @@ Plug 'hashivim/vim-terraform'
 Plug '/usr/local/opt/fzf'
 Plug 'junegunn/fzf.vim'
 Plug 'preservim/nerdtree'
-Plug 'sjl/vitality.vim'
 Plug 'srcery-colors/srcery-vim'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
@@ -81,6 +80,9 @@ set backspace=indent,eol,start
 set completeopt=menu,menuone
 set pumheight=10
 set clipboard=unnamed
+let &t_SI = "\<Esc>[6 q"
+let &t_SR = "\<Esc>[4 q"
+let &t_EI = "\<Esc>[2 q"
 
 
 """""""""""""""""""""
