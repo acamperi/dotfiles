@@ -28,6 +28,7 @@ Plug 'junegunn/fzf.vim'
 Plug 'preservim/nerdtree'
 Plug 'sjl/vitality.vim'
 Plug 'srcery-colors/srcery-vim'
+Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-obsession'
 Plug 'uarun/vim-protobuf'
@@ -235,10 +236,7 @@ filetype plugin indent on
 
 augroup comments
     autocmd!
-    autocmd FileType c,go,proto,rust,javascript nnoremap <buffer> <localleader>c I//<space><esc>
-    autocmd FileType python nnoremap <buffer> <localleader>c I#<space><esc>
-    autocmd FileType sql nnoremap <buffer> <localleader>c I--<space><esc>
-    autocmd FileType vim nnoremap <buffer> <localleader>c I"<space><esc>
+    autocmd FileType proto setlocal commentstring=//\ %s
 augroup END
 
 augroup snippets
