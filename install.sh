@@ -1,24 +1,22 @@
+#!/usr/bin/env bash
+
+set -eux
+
 # install brew
 curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh | bash --login
+brew_path=/usr/local/bin/brew
 
-# install fish
-brew install fish
-fish_path="$(brew --prefix)/bin/fish"
+# install packages
+$brew_path bundle
+
+# set up fish
+fish_path="$($brew_path --prefix)/bin/fish"
 echo "$fish_path" | sudo tee -a /etc/shells
 chsh -s "$fish_path"
 
-# install cargo
-curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
-
-# install common packages
-cargo install exa
-brew install jq
-cargo install ripgrep
-brew install tmux
-brew install htop
-
-# install vim
-brew install vim
+# set up vim
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-# TODO: install color schemes
+vim +PlugInstall +qall
 
+# install nerd font
+# https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/Iosevka/Regular/complete/Iosevka%20Term%20Nerd%20Font%20Complete.ttf
