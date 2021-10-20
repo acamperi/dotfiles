@@ -53,6 +53,7 @@ set laststatus=2
 set termguicolors
 set showcmd
 set lazyredraw
+set updatetime=100
 
 
 """"""""""""""""""
