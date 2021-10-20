@@ -1,7 +1,7 @@
 ############
 ### brew ###
 ############
-set -gx PATH /usr/local/bin $PATH
+/usr/local/bin/brew shellenv | source
 
 
 ############
@@ -41,7 +41,6 @@ set -gx PATH ~/.local/bin $PATH
 ##############
 ### editor ###
 ##############
-
 set -gx EDITOR vim
 
 
