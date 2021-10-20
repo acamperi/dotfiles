@@ -120,6 +120,7 @@ set statusline+=\ %y\       " File type
 set statusline+=%l:%c%V     " Current line and column(s)
 let g:airline_theme = 'simple'
 let g:airline_powerline_fonts = 1
+let g:airline_section_b = ''
 set noshowmode
 
 
