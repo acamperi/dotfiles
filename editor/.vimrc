@@ -219,14 +219,16 @@ vnoremap <right> <nop>
 """ NERDTree """
 """"""""""""""""
 
-augroup nerdtree
-    autocmd!
-    autocmd StdInReadPre * let s:std_in = 1
-    autocmd VimEnter * NERDTree | if argc() > 0 || exists("s:std_in") | wincmd p | endif
-    autocmd BufEnter * if winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
-augroup END
-let NERDTreeShowHidden = 1
-let NERDTreeIgnore = ['\.git']
+if exists("g:NERDTree")
+    augroup nerdtree
+        autocmd!
+        autocmd StdInReadPre * let s:std_in = 1
+        autocmd VimEnter * NERDTree | if argc() > 0 || exists("s:std_in") | wincmd p | endif
+        autocmd BufEnter * if winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
+    augroup END
+    let NERDTreeShowHidden = 1
+    let NERDTreeIgnore = ['\.git']
+endif
 
 
 """"""""""""""""""""""""""""""""""
@@ -257,7 +259,7 @@ endif
 
 set background=dark
 let g:srcery_italic = 1
-colorscheme srcery
+silent! colorscheme srcery
 set t_ZH=[3m
 set t_ZR=[23m
 
