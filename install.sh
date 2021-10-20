@@ -4,13 +4,12 @@ set -eux
 
 # install brew
 curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh | bash --login
-brew_path=/usr/local/bin/brew
 
 # install packages
-$brew_path bundle
+brew bundle
 
 # set up fish
-fish_path="$($brew_path --prefix)/bin/fish"
+fish_path="$(brew --prefix)/bin/fish"
 echo "$fish_path" | sudo tee -a /etc/shells
 chsh -s "$fish_path"
 
