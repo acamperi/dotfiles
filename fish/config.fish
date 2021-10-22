@@ -135,12 +135,17 @@ set -g __fish_git_prompt_showuntrackedfiles
 set -g __fish_git_prompt_showdirtystate
 set -e __fish_git_prompt_showstashstate
 set -g __fish_git_prompt_showupstream none
+set -g fish_prompt_pwd_dir_length 0
 function fish_prompt
+    echo
     printf "\033[6 q"
+    set_color green
+    printf ' %s' (prompt_pwd)
     set_color red
-    printf '%s ' (fish_git_prompt)
+    printf '%s' (fish_git_prompt)
+    echo
     set_color --bold yellow
-    echo -n '>>>>> '
+    echo -n ' >>>>> '
     set_color normal
 end
 
