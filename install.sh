@@ -3,7 +3,9 @@
 set -eux
 
 # install brew
-curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh | bash --login
+if test ! "$(command -v brew)"; then
+    curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh | bash --login
+fi
 
 # install packages
 brew bundle
@@ -17,7 +19,7 @@ ln -nfsv "$dotfiles_dir/kitty/kitty.conf" ~/.config/kitty/kitty.conf
 
 # set up fish
 fish_path="$(brew --prefix)/bin/fish"
-echo "$fish_path" | sudo tee -a /etc/shells
+grep -qxF "/usr/local/bin/fish" /etc/shells || echo "$fish_path" >> /etc/shells
 chsh -s "$fish_path"
 mkdir -p ~/.config/fish/functions
 ln -nfsv "$dotfiles_dir/fish/config.fish" ~/.config/fish/config.fish
