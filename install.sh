@@ -16,6 +16,7 @@ dotfiles_dir="$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd
 # set up kitty
 mkdir -p ~/.config/kitty
 ln -nfsv "$dotfiles_dir/kitty/kitty.conf" ~/.config/kitty/kitty.conf
+ln -nfsv "$dotfiles_dir/kitty/srcery_kitty.conf" ~/.config/kitty/srcery_kitty.conf
 
 # set up fish
 fish_path="$(brew --prefix)/bin/fish"
