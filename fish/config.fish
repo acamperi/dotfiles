@@ -41,7 +41,7 @@ set -gx PATH ~/.local/bin $PATH
 ##############
 ### editor ###
 ##############
-set -gx EDITOR vim
+set -gx EDITOR nvim
 
 
 ########################

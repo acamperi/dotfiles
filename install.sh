@@ -27,10 +27,14 @@ ln -nfsv "$dotfiles_dir/fish/config.fish" ~/.config/fish/config.fish
 ln -nfsv "$dotfiles_dir/fish/functions/fish_user_key_bindings.fish" ~/.config/fish/functions/fish_user_key_bindings.fish
 ln -nfsv "$dotfiles_dir/fish/functions/fzf_key_bindings.fish" ~/.config/fish/functions/fish_user_key_bindings.fish
 
-# set up vim
+# set up vim and nvim
 ln -nfsv "$dotfiles_dir/vim/vimrc" ~/.vimrc
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 vim +PlugInstall +qall
+mkdir -p ~/.config/nvim
+ln -nfsv "$dotfiles_dir/nvim/init.vim" ~/.config/nvim/init.nvim
+curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+nvim +PlugInstall +qall
 
 # set up git
 mkdir -p ~/.config/git
