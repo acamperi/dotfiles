@@ -38,6 +38,14 @@ Plug 'vim-airline/vim-airline-themes'
 call plug#end()
 
 
+""""""""""""
+""" Meta """
+""""""""""""
+
+nnoremap <leader>ev :vsplit $MYVIMRC<cr>
+nnoremap <leader>sv :source $MYVIMRC<cr>
+
+
 """"""""""""""""""""""""
 """ General Settings """
 """"""""""""""""""""""""
@@ -54,12 +62,72 @@ set termguicolors
 set showcmd
 set lazyredraw
 set updatetime=100
+set timeoutlen=100
 
 
-""""""""""""""""""
-""" Whitespace """
-""""""""""""""""""
+"""""""""""""""""""""""
+""" Window Settings """
+"""""""""""""""""""""""
 
+nnoremap <leader>q :q<cr>
+nnoremap <leader>h <c-w>h
+nnoremap <leader>j <c-w>j
+nnoremap <leader>k <c-w>k
+nnoremap <leader>l <c-w>l
+
+
+"""""""""""""""""""""
+""" File Settings """
+"""""""""""""""""""""
+
+filetype off
+filetype plugin indent on
+set encoding=utf-8
+set autoread
+set autowrite
+set noswapfile
+set nobackup
+set hidden
+nnoremap <leader>w :w<cr>
+set undolevels=1000
+if has('persistent_undo')
+    set undofile
+    set undodir=~/.config/vim/tmp/undo//
+endif
+
+
+""""""""""""""""""""
+""" Text Editing """
+""""""""""""""""""""
+
+" general
+set showmatch
+set virtualedit=onemore
+set backspace=indent,eol,start
+set completeopt=menu,menuone
+set pumheight=10
+set clipboard=unnamed
+
+" wrapping
+set wrap
+set linebreak
+set textwidth=0
+augroup wrapping
+    autocmd!
+    autocmd FileType proto setlocal textwidth=100
+augroup END
+
+" cursor
+let &t_SI = "\<Esc>[6 q"
+let &t_SR = "\<Esc>[4 q"
+let &t_EI = "\<Esc>[2 q"
+augroup cursor_line
+    autocmd!
+    autocmd VimEnter,WinEnter,BufWinEnter * setlocal cursorline
+    autocmd WinLeave * setlocal nocursorline
+augroup END
+
+" whitespace
 set shiftwidth=4
 set shiftround
 set tabstop=4
@@ -68,35 +136,34 @@ set expandtab
 set smarttab
 set autoindent
 
+" move lines up and down
+nnoremap <leader>= ddp
+nnoremap <leader>- ddkP
 
-""""""""""""""""""""
-""" Text Editing """
-""""""""""""""""""""
+" wrap text objects in quotes
+vnoremap <leader>" <esc>`>a"<esc>`<i"<esc>
+vnoremap <leader>' <esc>`>a'<esc>`<i'<esc>
 
-set wrap
-set linebreak
-set textwidth=0
-set showmatch
-set virtualedit=onemore
-set backspace=indent,eol,start
-set completeopt=menu,menuone
-set pumheight=10
-set clipboard=unnamed
-let &t_SI = "\<Esc>[6 q"
-let &t_SR = "\<Esc>[4 q"
-let &t_EI = "\<Esc>[2 q"
+" movements to paren groups
+onoremap in( :<c-u>normal! f(vi(<cr>
+onoremap il( :<c-u>normal! F)vi(<cr>
+onoremap an( :<c-u>normal! f(va(<cr>
+onoremap al( :<c-u>normal! F)va(<cr>
 
+" typos and snippets
+iabbrev adn and
+iabbrev hte the
+augroup snippets
+    autocmd!
+    autocmd FileType c,go,rust,javascript :iabbrev <buffer> ret return
+augroup END
 
-"""""""""""""""""""""
-""" File Settings """
-"""""""""""""""""""""
-
-set encoding=utf-8
-set autoread
-set autowrite
-set noswapfile
-set nobackup
-set hidden
+" comments
+augroup comments
+    autocmd!
+    autocmd FileType proto setlocal commentstring=//%s
+    autocmd FileType sql setlocal commentstring=--%s
+augroup END
 
 
 """"""""""""""
@@ -107,6 +174,11 @@ set hlsearch
 set ignorecase
 set smartcase
 set incsearch
+nnoremap n nzz
+nnoremap N Nzz
+nnoremap <leader>/ :let @/ = ""<cr>
+nnoremap / /\v\c
+nnoremap ? ?\v\c
 
 
 """""""""""""""""""
@@ -124,80 +196,38 @@ let g:airline_section_b = ''
 set noshowmode
 
 
-""""""""""""
-""" Undo """
-""""""""""""
-
-set undolevels=1000
-if has('persistent_undo')
-    set undofile
-    set undodir=~/.config/vim/tmp/undo//
-endif
-
-
 """"""""""""""""
-""" Mappings """
+""" NERDTree """
 """"""""""""""""
 
-" file operations
-nnoremap <leader>w :w<cr>
-
-" window operations
-nnoremap <leader>h <c-w>h
-nnoremap <leader>j <c-w>j
-nnoremap <leader>k <c-w>k
-nnoremap <leader>l <c-w>l
-
-" move lines up and down
-nnoremap <leader>- ddp
-nnoremap <leader>= ddkP
-
-" edit/source vimrc
-nnoremap <leader>ev :vsplit $MYVIMRC<cr>
-nnoremap <leader>sv :source $MYVIMRC<cr>
-
-" typos
-iabbrev adn and
-iabbrev hte the
-
-" wrap text objects in quotes
-vnoremap <leader>" <esc>`>a"<esc>`<i"<esc>
-vnoremap <leader>' <esc>`>a'<esc>`<i'<esc>
-
-" jump to beginning/end of line
-nnoremap H ^
-onoremap H ^
-nnoremap L $
-onoremap L $
-
-" movements to paren groups
-onoremap in( :<c-u>normal! f(vi(<cr>
-onoremap il( :<c-u>normal! F)vi(<cr>
-onoremap an( :<c-u>normal! f(va(<cr>
-onoremap al( :<c-u>normal! F)va(<cr>
-
-" search
-nnoremap n nzz
-nnoremap N Nzz
-nnoremap <leader>/ :let @/ = ""<cr>
-nnoremap / /\v\c
-nnoremap ? ?\v\c
-
-" NERDTree
 nnoremap <leader>n :NERDTreeFocus<cr>
 nnoremap <leader>nn :NERDTree<cr>
 nnoremap <leader>nt :NERDTreeToggle<cr>
 nnoremap <leader>nf :NERDTreeFind<cr>
+augroup nerdtree
+    autocmd!
+    autocmd StdInReadPre * let s:std_in = 1
+    autocmd VimEnter * if exists("g:NERDTree") | NERDTree | if argc() > 0 || exists("s:std_in") | wincmd p | endif | endif
+    autocmd BufEnter * if winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
+    autocmd BufEnter * if bufname('#') =~ 'NERD_tree_\d\+' && bufname('%') !~ 'NERD_tree_\d\+' && winnr('$') > 1 |
+augroup END
+let g:NERDTreeShowHidden = 1
+let g:NERDTreeIgnore = ['\.git']
+let g:NERDTreeMapOpenSplit = 's'
+let g:NERDTreeMapOpenVSplit = 'v'
 
-" FZF
+
+"""""""""""
+""" FZF """
+"""""""""""
+
 nnoremap <leader>o :GFiles --exclude-standard --cached --others<cr>
 nnoremap <leader>O :Files<cr>
 nnoremap <leader>f :Rg<cr>
-
-" matching brackets
-" inoremap {<cr> {<cr>}<esc>ko<tab>
-" inoremap [<cr> [<cr>]<esc>ko<tab>
-" inoremap (<cr> (<cr>)<esc>ko<tab>
+let g:fzf_action = {
+  \ 'ctrl-t': 'tab split',
+  \ 'ctrl-s': 'split',
+  \ 'ctrl-v': 'vsplit' }
 
 
 """""""""""""""""""""
@@ -216,40 +246,6 @@ vnoremap <left> <nop>
 vnoremap <down> <nop>
 vnoremap <up> <nop>
 vnoremap <right> <nop>
-
-
-"""""""""""""""
-""" NERDTree """
-""""""""""""""""
-
-if exists("g:NERDTree")
-    augroup nerdtree
-        autocmd!
-        autocmd StdInReadPre * let s:std_in = 1
-        autocmd VimEnter * NERDTree | if argc() > 0 || exists("s:std_in") | wincmd p | endif
-        autocmd BufEnter * if winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
-    augroup END
-    let NERDTreeShowHidden = 1
-    let NERDTreeIgnore = ['\.git']
-endif
-
-
-""""""""""""""""""""""""""""""""""
-""" FileType-specific Settings """
-""""""""""""""""""""""""""""""""""
-
-filetype off
-filetype plugin indent on
-
-augroup comments
-    autocmd!
-    autocmd FileType proto setlocal commentstring=//\ %s
-augroup END
-
-augroup snippets
-    autocmd!
-    autocmd FileType c,go,rust,javascript :iabbrev <buffer> ret return
-augroup END
 
 
 """""""""""""""""""""""
