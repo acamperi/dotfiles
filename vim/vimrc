@@ -271,12 +271,19 @@ set t_ZR=[23m
 """ vim-go """
 """"""""""""""
 
-let g:go_fmt_command = "goimports"
-let g:go_metalinter_autosave = 1
+let g:go_fmt_command = "gofmt"
+let g:go_imports_mode = "goimports"
+let g:go_fmt_autosave = 1
+let g:go_imports_autosave = 0
+let g:go_jump_to_error = 0
+let g:go_metalinter_autosave = 0
 let g:go_autodetect_gopath = 1
 let g:go_list_type = "quickfix"
 let g:go_auto_sameids = 1
 let g:go_auto_type_info = 1
+let g:go_fmt_options = {
+    \ "goimports": "-e -local gitlab.com/levelbenefits/level",
+    \}
 
 let g:go_highlight_types = 1
 let g:go_highlight_fields = 1
@@ -286,3 +293,11 @@ let g:go_highlight_operators = 1
 let g:go_highlight_extra_types = 1
 let g:go_highlight_build_constraints = 1
 let g:go_highlight_generate_tags = 1
+
+augroup golang
+    autocmd!
+    autocmd FileType go nnoremap <buffer> <leader>b :GoBuild<cr>
+    autocmd FileType go nnoremap <buffer> <leader>t :GoTest -timeout=120s<cr>
+    autocmd FileType go nnoremap <buffer> <leader>tf :GoTestFunc -timeout=120s<cr>
+    autocmd FileType go nnoremap <buffer> <leader>i :GoImports<cr>
+augroup END
