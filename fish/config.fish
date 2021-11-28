@@ -162,3 +162,4 @@ end
 function prod_k8s
     set -gx KUBECONFIG ~/code/level/k8s/clusters.yaml
 end
+abbr -a tm 'sh ~/dotfiles/scripts/init_level_tmux.sh'
