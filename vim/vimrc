@@ -212,7 +212,7 @@ augroup nerdtree
     autocmd BufEnter * if bufname('#') =~ 'NERD_tree_\d\+' && bufname('%') !~ 'NERD_tree_\d\+' && winnr('$') > 1 |
 augroup END
 let g:NERDTreeShowHidden = 1
-let g:NERDTreeIgnore = ['\.git']
+let g:NERDTreeIgnore = ['\.git$', '\.idea$']
 let g:NERDTreeMapOpenSplit = 's'
 let g:NERDTreeMapOpenVSplit = 'v'
 
