@@ -216,6 +216,7 @@ let g:NERDTreeIgnore = ['\.git$', '\.idea$']
 let g:NERDTreeMapOpenSplit = 's'
 let g:NERDTreeMapOpenVSplit = 'v'
 let g:NERDTreeWinSize = 40
+let g:NERDTreeAutoDeleteBuffer = 1
 
 
 """""""""""
