@@ -53,8 +53,6 @@ nnoremap <leader>sv :source $MYVIMRC<cr>
 
 set nocompatible
 set number
-set splitright
-set splitbelow
 set belloff=all
 set ruler
 set showtabline=2
@@ -70,6 +68,8 @@ set timeoutlen=100
 """ Window Settings """
 """""""""""""""""""""""
 
+set splitright
+set splitbelow
 nnoremap <leader>q :q<cr>
 nnoremap <leader>h <c-w>h
 nnoremap <leader>j <c-w>j
@@ -108,6 +108,10 @@ set backspace=indent,eol,start
 set completeopt=menu,menuone
 set pumheight=10
 set clipboard=unnamed
+
+" folding
+set foldmethod=syntax
+set foldnestmax=1
 
 " wrapping
 set wrap
