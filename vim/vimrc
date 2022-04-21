@@ -61,7 +61,7 @@ set termguicolors
 set showcmd
 set lazyredraw
 set updatetime=100
-set timeoutlen=100
+set timeoutlen=500
 
 
 """""""""""""""""""""""
