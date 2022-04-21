@@ -94,6 +94,19 @@ for d in ["h", "j", "k", "l"]
     execute "inoremap <silent> <c-".d."> <c-\\><c-n><c-w>".d
     execute "tnoremap <silent> <c-".d."> <c-\\><c-n><c-w>".d
 endfor
+augroup terminsert
+    autocmd!
+    autocmd BufEnter * if &buftype ==# 'terminal' | :startinsert | endif
+augroup END
+
+
+"""""""""""""""""""""""""
+""" Terminal Settings """
+"""""""""""""""""""""""""
+
+nnoremap <leader>st :split +terminal<cr>
+nnoremap <leader>vt :vsplit +terminal<cr>
+tnoremap <leader><esc> <c-\><c-n>
 
 
 """""""""""""""""""""
