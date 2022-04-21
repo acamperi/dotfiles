@@ -315,4 +315,6 @@ augroup golang
     autocmd FileType go nnoremap <buffer> <leader>t :GoTest -timeout=120s<cr>
     autocmd FileType go nnoremap <buffer> <leader>tf :GoTestFunc -timeout=120s<cr>
     autocmd FileType go nnoremap <buffer> <leader>i :GoImports<cr>
+    autocmd FileType go nnoremap <buffer> <leader>d :GoDef<cr>
+    autocmd FileType go nnoremap <buffer> <leader>r :GoReferrers<cr>
 augroup END
