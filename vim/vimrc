@@ -181,7 +181,6 @@ set smartcase
 set incsearch
 nnoremap n nzz
 nnoremap N Nzz
-nnoremap <leader>/ :let @/ = ""<cr>
 nnoremap / /\v\c
 nnoremap ? ?\v\c
 
@@ -230,7 +229,7 @@ let g:NERDTreeAutoDeleteBuffer = 1
 
 nnoremap <leader>o :GFiles --exclude-standard --cached --others<cr>
 nnoremap <leader>O :Files<cr>
-nnoremap <leader>f :Rg<cr>
+nnoremap <leader>/ :Rg<cr>
 let g:fzf_action = {
   \ 'ctrl-t': 'tab split',
   \ 'ctrl-s': 'split',
