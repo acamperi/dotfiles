@@ -15,7 +15,7 @@ set -gx PATH ~/.cargo/bin $PATH
 ### go ###
 ##########
 set -gx GOPATH ~/.go
-set -gx GOROOT /usr/local/Cellar/go@1.16/1.16.9/libexec
+set -gx GOROOT /usr/local/Cellar/go/1.17.7/libexec
 set -gx GOPRIVATE "gitlab.com/levelbenefits/*"
 set -gx PATH $GOPATH/bin $GOROOT/bin $PATH
 
@@ -163,3 +163,4 @@ function prod_k8s
     set -gx KUBECONFIG ~/code/level/k8s/clusters.yaml
 end
 abbr -a tm 'sh ~/dotfiles/scripts/init_level_tmux.sh'
+if [ -f '/usr/local/bin/google-cloud-sdk/path.fish.inc' ]; . '/usr/local/bin/google-cloud-sdk/path.fish.inc'; end
