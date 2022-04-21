@@ -2,7 +2,7 @@
     name = Ariel Camperi
     email = ariel.camperi@level.com
 [core]
-    editor = vim
+    editor = nvim
 [alias]
     c = commit
     co = checkout
