@@ -47,6 +47,24 @@ nnoremap <leader>ev :vsplit $MYVIMRC<cr>
 nnoremap <leader>sv :source $MYVIMRC<cr>
 
 
+""""""""""""""""""""
+""" MacOS Remaps """
+""""""""""""""""""""
+
+nmap ˙ <a-h>
+nmap ∆ <a-j>
+nmap ˚ <a-k>
+nmap ¬ <a-l>
+imap ˙ <a-h>
+imap ∆ <a-j>
+imap ˚ <a-k>
+imap ¬ <a-l>
+vmap ˙ <a-h>
+vmap ∆ <a-j>
+vmap ˚ <a-k>
+vmap ¬ <a-l>
+
+
 """"""""""""""""""""""""
 """ General Settings """
 """"""""""""""""""""""""
@@ -155,8 +173,12 @@ set smarttab
 set autoindent
 
 " move lines up and down
-nnoremap <leader>= ddp
-nnoremap <leader>- ddkP
+nnoremap <a-j> :move .+1<CR>==
+nnoremap <a-k> :move .-2<CR>==
+inoremap <a-j> <Esc>:move .+1<CR>==gi
+inoremap <a-k> <Esc>:move .-2<CR>==gi
+vnoremap <a-j> :move '>+1<CR>gv=gv
+vnoremap <a-k> :move '<-2<CR>gv=gv
 
 " wrap text objects in quotes
 vnoremap <leader>" <esc>`>a"<esc>`<i"<esc>
