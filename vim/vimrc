@@ -89,10 +89,11 @@ set timeoutlen=500
 set splitright
 set splitbelow
 nnoremap <leader>q :q<cr>
-nnoremap <leader>h <c-w>h
-nnoremap <leader>j <c-w>j
-nnoremap <leader>k <c-w>k
-nnoremap <leader>l <c-w>l
+for d in ["h", "j", "k", "l"]
+    execute "nnoremap <silent> <c-".d."> <c-w>".d
+    execute "inoremap <silent> <c-".d."> <c-\\><c-n><c-w>".d
+    execute "tnoremap <silent> <c-".d."> <c-\\><c-n><c-w>".d
+endfor
 
 
 """""""""""""""""""""
