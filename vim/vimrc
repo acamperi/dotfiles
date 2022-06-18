@@ -354,3 +354,10 @@ augroup golang
     autocmd FileType go nnoremap <buffer> <leader>d :GoDef<cr>
     autocmd FileType go nnoremap <buffer> <leader>r :GoReferrers<cr>
 augroup END
+
+
+"""""""""""""""""""""
+""" vim-terraform """
+"""""""""""""""""""""
+
+let g:terraform_fmt_on_save = 1
