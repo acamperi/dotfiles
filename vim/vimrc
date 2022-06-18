@@ -25,6 +25,7 @@ Plug 'dag/vim-fish'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'hashivim/vim-terraform'
 Plug '/usr/local/opt/fzf'
+Plug 'jiangmiao/auto-pairs'
 Plug 'junegunn/fzf.vim'
 Plug 'preservim/nerdtree'
 Plug 'rust-lang/rust.vim'
