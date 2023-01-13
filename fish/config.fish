@@ -164,8 +164,18 @@ end
 #############
 ### level ###
 #############
+set -gx LEVEL_REPO_ROOT ~/code/level
 abbr -a brg 'bazel run //:gazelle'
 abbr -a mgp 'gitroot; make go-proto'
+abbr -a gmt 'gitroot; cd go; go mod tidy; cd ..'
+abbr -a mbf 'gitroot; make bazel-fmt'
+abbr -a tf 'terraform'
+abbr -a tfi 'terraform init'
+abbr -a tfp 'terraform plan'
+abbr -a tfa 'terraform apply'
+abbr -a awssso 'sourcesh '$LEVEL_REPO_ROOT'/sre/aws/aws_cli_sso.sh'
+abbr -a k8sadmin 'sourcesh '$LEVEL_REPO_ROOT'/sre/aws/aws_k8s_admin.sh'
+abbr -a k8sbase 'sourcesh '$LEVEL_REPO_ROOT'/sre/aws/aws_k8s_base.sh'
 function local_k8s
     set -ge KUBECONFIG
     kubectl config set-context minikube --namespace=local
