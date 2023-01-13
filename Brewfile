@@ -1,6 +1,7 @@
 # taps
 tap "homebrew/cask"
 tap "homebrew/cask-fonts"
+tap "hashicorp/tap"
 
 # packages
 brew "exa"
@@ -12,6 +13,7 @@ brew "jq"
 brew "nvim"
 brew "ripgrep"
 brew "stow"
+brew "terraform-ls"
 brew "tmux"
 brew "vim"
 

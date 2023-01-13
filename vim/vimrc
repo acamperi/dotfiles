@@ -366,8 +366,16 @@ augroup golang
 augroup END
 
 
-"""""""""""""""""""""
-""" vim-terraform """
-"""""""""""""""""""""
+"""""""""""""""""
+""" terraform """
+"""""""""""""""""
 
-let g:terraform_fmt_on_save = 1
+" let g:terraform_fmt_on_save = 1
+lua <<EOF
+  require'lspconfig'.terraformls.setup{}
+EOF
+augroup terraform
+    autocmd!
+    autocmd BufWritePre *.tfvars lua vim.lsp.buf.format()
+    autocmd BufWritePre *.tf lua vim.lsp.buf.format()
+augroup END
