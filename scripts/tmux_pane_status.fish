@@ -2,6 +2,6 @@
 
 cd $argv[1]
 # set_color green
-printf ' %s' (prompt_pwd)
+printf ' %s ' (prompt_pwd)
 # set_color red
-printf '%s ' (fish_git_prompt)
+# printf '%s ' (fish_git_prompt)

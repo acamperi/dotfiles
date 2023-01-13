@@ -79,6 +79,7 @@ abbr -a gca 'git commit --amend'
 abbr -a gsl 'git summary --line'
 abbr -a gl1 'git log -1'
 abbr -a gl2 'git log -2'
+abbr -a gl3 'git log -3'
 abbr -a grpo 'git remote prune origin'
 abbr -a wip 'git add .; git commit -m "WIP"'
 abbr -a awip 'git add .; git commit --amend -m "WIP"'
@@ -137,13 +138,23 @@ set -e __fish_git_prompt_showstashstate
 set -g __fish_git_prompt_showupstream none
 set -g fish_prompt_pwd_dir_length 0
 function fish_prompt
+    set -l branch (git rev-parse --abbrev-ref HEAD 2>/dev/null)
     echo
     printf "\033[6 q"
-    # set_color green
-    # printf ' %s' (prompt_pwd)
+    set_color green
+    printf ' %s' (prompt_pwd)
     # set_color red
     # printf '%s' (fish_git_prompt)
     # echo
+    if not test -z $branch
+        set_color white
+        printf ' ('
+        set_color red
+        printf '%s' (echo $branch)
+        set_color white
+        printf ')'
+        echo
+    end
     set_color --bold yellow
     echo -n ' >>>>> '
     set_color normal
