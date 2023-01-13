@@ -27,14 +27,16 @@ ln -nfsv "$dotfiles_dir/fish/config.fish" ~/.config/fish/config.fish
 ln -nfsv "$dotfiles_dir/fish/functions/fish_user_key_bindings.fish" ~/.config/fish/functions/fish_user_key_bindings.fish
 ln -nfsv "$dotfiles_dir/fish/functions/fzf_key_bindings.fish" ~/.config/fish/functions/fish_user_key_bindings.fish
 
-# set up vim and nvim
-ln -nfsv "$dotfiles_dir/vim/vimrc" ~/.vimrc
-curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-vim +PlugInstall +qall
+# set up neovim
+# ln -nfsv "$dotfiles_dir/vim/vimrc" ~/.vimrc
+# curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+# vim +PlugInstall +qall
 mkdir -p ~/.config/nvim
-ln -nfsv "$dotfiles_dir/nvim/init.vim" ~/.config/nvim/init.vim
-curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-nvim +PlugInstall +qall
+ln -nfsv "$dotfiles_dir/nvim/init.lua" ~/.config/nvim/init.lua
+ln -nfsv "$dotfiles_dir/nvim/lua" ~/.config/nvim/lua
+# curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+# nvim +PlugInstall +qall
+nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync'
 
 # set up git
 mkdir -p ~/.config/git
