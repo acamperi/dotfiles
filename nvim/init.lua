@@ -146,8 +146,9 @@ vim.api.nvim_create_autocmd('FileType', {
 vim.api.nvim_create_autocmd('FileType', {
     pattern = {'c', 'go', 'javascript', 'lua', 'rust', 'terraform', 'typescript', 'typescriptreact'},
     group = wrapping,
-    callback = function() vim.b.argrap_tail_comma = true end,
+    callback = function() vim.b.argwrap_tail_comma = true end,
 })
+vim.keymap.set('n', '<leader>aw', function() vim.cmd.ArgWrap() end)
 
 -- cursor
 -- TODO: fix these
@@ -216,7 +217,7 @@ vim.api.nvim_create_autocmd('FileType', {
 ------------
 
 vim.opt.hlsearch = true
-vim.opt.ignorecase = false
+vim.opt.ignorecase = true
 vim.opt.smartcase = true
 vim.opt.incsearch = true
 vim.keymap.set('n', 'n', 'nzz')
