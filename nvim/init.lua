@@ -294,7 +294,7 @@ vim.api.nvim_create_autocmd('BufEnter', {
 ---------
 
 vim.opt.runtimepath:append('/usr/local/opt/fzf')
-vim.keymap.set('n', '<leader>o', function() vim.cmd([[:GFiles '--exclude-standard --cached --others']]) end)
+vim.keymap.set('n', '<leader>o', function() vim.cmd([[:GFiles --exclude-standard --cached --others]]) end)
 vim.keymap.set('n', '<leader>O', function() vim.cmd.Files() end)
 vim.keymap.set('n', '<leader>/', function() vim.cmd.Rg() end)
 vim.api.nvim_set_var('fzf_action', {
