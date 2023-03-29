@@ -16,3 +16,5 @@
     insteadOf = https://gitlab.com/
 [pull]
     ff = only
+[init]
+	defaultBranch = main
