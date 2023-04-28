@@ -1,23 +1,30 @@
-local ensure_packer = function()
-    local install_path = vim.fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
-    if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
-        vim.fn.system({
-            'git',
-            'clone',
-            '--depth',
-            '1',
-            'https://github.com/wbthomason/packer.nvim',
-            install_path,
-        })
-        vim.cmd.packadd('packer.nvim')
-        return true
-    end
-    return false
+local install_path = vim.fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
+if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
+    PACKER_BOOTSTRAP = vim.fn.system({
+        'git',
+        'clone',
+        '--depth',
+        '1',
+        'https://github.com/wbthomason/packer.nvim',
+        install_path,
+    })
+    print("Bootstrapping packer, close and reopen Neovim.")
+    vim.cmd.packadd('packer.nvim')
 end
 
-local packer_bootstrap = ensure_packer()
+local packer_user_config = vim.api.nvim_create_augroup('packer_user_config', {clear = true})
+vim.api.nvim_create_autocmd('BufWritePost', {
+    pattern = 'packer_init.lua',
+    group = packer_user_config,
+    callback = function() vim.cmd([[source <afile> | PackerSync]]) end,
+})
 
-return require('packer').startup(function(use)
+local status_ok, packer = pcall(require, "packer")
+if not status_ok then
+    return
+end
+
+return packer.startup(function(use)
     use 'wbthomason/packer.nvim'
 
     use 'FooSoft/vim-argwrap'
@@ -46,7 +53,7 @@ return require('packer').startup(function(use)
     use 'vim-airline/vim-airline'
     use 'vim-airline/vim-airline-themes'
 
-    if packer_bootstrap then
+    if PACKER_BOOTSTRAP then
         require('packer').sync()
     end
 end)

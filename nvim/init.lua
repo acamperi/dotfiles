@@ -19,7 +19,6 @@ vim.g.maplocalleader = '\\'
 -------------
 
 require('packer_init')
--- vim.cmd.PackerSync()
 
 
 ------------------
