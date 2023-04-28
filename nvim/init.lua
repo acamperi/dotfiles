@@ -174,6 +174,12 @@ vim.opt.softtabstop = 0
 vim.opt.expandtab = true
 vim.opt.smarttab = true
 vim.opt.autoindent = true
+local whitespace = vim.api.nvim_create_augroup('whitespace', {clear = true})
+vim.api.nvim_create_autocmd('BufWritePre', {
+    pattern = '*',
+    group = whitespace,
+    command = [[%s/\s\+$//e]],
+})
 
 -- move lines up and down
 vim.keymap.set('n', '<a-j>', ':move .+1<cr>==')
