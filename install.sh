@@ -28,14 +28,9 @@ ln -nfsv "$dotfiles_dir/fish/functions/fish_user_key_bindings.fish" ~/.config/fi
 ln -nfsv "$dotfiles_dir/fish/functions/fzf_key_bindings.fish" ~/.config/fish/functions/fish_user_key_bindings.fish
 
 # set up neovim
-# ln -nfsv "$dotfiles_dir/vim/vimrc" ~/.vimrc
-# curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-# vim +PlugInstall +qall
 mkdir -p ~/.config/nvim
 ln -nfsv "$dotfiles_dir/nvim/init.lua" ~/.config/nvim/init.lua
 ln -nfsv "$dotfiles_dir/nvim/lua" ~/.config/nvim/lua
-# curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-# nvim +PlugInstall +qall
 nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync'
 
 # set up git
@@ -46,6 +41,3 @@ ln -nfsv "$dotfiles_dir/git/ignore" ~/.config/git/ignore
 # set up tmux
 mkdir -p ~/.config/tmux
 ln -nfsv "$dotfiles_dir/tmux/tmux.conf" ~/.config/tmux/tmux.conf
-
-# install nerd font
-# https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/Iosevka/Regular/complete/Iosevka%20Term%20Nerd%20Font%20Complete.ttf
