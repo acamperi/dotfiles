@@ -1,99 +1,91 @@
-local install_path = vim.fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
-if not vim.loop.fs_stat(install_path) then
-    PACKER_BOOTSTRAP = vim.fn.system({
+local lazypath = vim.fn.stdpath('data') .. '/lazy/lazy.nvim'
+if not vim.loop.fs_stat(lazypath) then
+    vim.fn.system({
         'git',
         'clone',
-        '--depth',
-        '1',
-        'https://github.com/wbthomason/packer.nvim',
-        install_path,
+        '--filter=blob:none',
+        'https://github.com/folke/lazy.nvim.git',
+        '--branch=stable',
+        lazypath,
     })
-    print("Bootstrapping packer, close and reopen Neovim.")
-    vim.cmd.packadd('packer.nvim')
 end
+vim.opt.runtimepath:prepend(lazypath)
 
-local packer_user_config = vim.api.nvim_create_augroup('packer_user_config', {clear = true})
-vim.api.nvim_create_autocmd('BufWritePost', {
-    pattern = 'packer_init.lua',
-    group = packer_user_config,
-    callback = function() vim.cmd([[source <afile> | PackerSync]]) end,
-})
-
-local status_ok, packer = pcall(require, "packer")
-if not status_ok then
+local lazy_ok, lazy = pcall(require, 'lazy')
+if not lazy_ok then
     return
 end
 
-return packer.startup(function(use)
-    use 'wbthomason/packer.nvim'
+return lazy.setup({
+    'wbthomason/packer.nvim',
 
     -- editing
-    use 'FooSoft/vim-argwrap'
-    use 'jiangmiao/auto-pairs'
-    use {
-        'numToStr/Comment.nvim',
-        config = function() require('Comment').setup() end,
-    }
-    use 'tpope/vim-repeat'
-    use 'tpope/vim-sleuth'
-    use 'tpope/vim-surround'
-
-    -- appearance
-    use 'airblade/vim-gitgutter'
-    use 'srcery-colors/srcery-vim'
-    use 'vim-airline/vim-airline'
-    use 'vim-airline/vim-airline-themes'
+    'FooSoft/vim-argwrap',
+    'jiangmiao/auto-pairs',
+    { 'numToStr/Comment.nvim',                    opts = {} },
+    'tpope/vim-repeat',
+    'tpope/vim-sleuth',
+    'tpope/vim-surround',
 
     -- LSP
-    use {
+    {
         'neovim/nvim-lspconfig',
-        requires = {
-            {'williamboman/mason.nvim', run = ':MasonUpdate'},
+        dependencies = {
+            'williamboman/mason.nvim',
             'williamboman/mason-lspconfig.nvim',
-            {
-                'j-hui/fidget.nvim',
-                config = function() require('fidget').setup() end,
-            },
-            {
-                'folke/neodev.nvim',
-                config = function() require('neodev').setup() end,
-            },
+            { 'j-hui/fidget.nvim', opts = {} },
+            { 'folke/neodev.nvim', opts = {} },
         },
-    }
+    },
 
     -- autocomplete
-    use {
+    {
         'hrsh7th/nvim-cmp',
-        requires = {
+        dependencies = {
+            'hrsh7th/cmp-buffer',
+            'hrsh7th/cmp-path',
             'hrsh7th/cmp-nvim-lsp',
-            'L3MON4D3/LuaSnip',
+            {
+                'L3MON4D3/LuaSnip',
+                opts = {},
+                dependencies = { 'rafamadriz/friendly-snippets' },
+            },
             'saadparwaiz1/cmp_luasnip',
         },
-    }
+    },
 
     -- search
-    use '/usr/local/opt/fzf'
-    use 'junegunn/fzf.vim'
+    {
+        'nvim-telescope/telescope.nvim',
+        version = '*',
+        dependencies = { 'nvim-lua/plenary.nvim' },
+    },
+    { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
 
     -- file browser
-    use {
+    {
         'nvim-tree/nvim-tree.lua',
         requires = {
             'nvim-tree/nvim-web-devicons',
         },
-    }
+    },
+
+    -- appearance
+    'airblade/vim-gitgutter',
+    'srcery-colors/srcery-vim',
+    'vim-airline/vim-airline',
+    'vim-airline/vim-airline-themes',
+
+    -- treesitter
+    { 'nvim-treesitter/nvim-treesitter', build = ':TSUpdate' },
 
     -- Git
-    use 'tpope/vim-fugitive'
+    'tpope/vim-fugitive',
 
     -- language-specific plugins
-    use { 'fatih/vim-go', run = ':GoUpdateBinaries' }
-    -- use 'dag/vim-fish'
-    -- use 'hashivim/vim-terraform'
-    -- use 'uarun/vim-protobuf'
-    -- use 'rust-lang/rust.vim'
-
-    if PACKER_BOOTSTRAP then
-        require('packer').sync()
-    end
-end)
+    { 'fatih/vim-go',                    build = ':GoUpdateBinaries' },
+    -- 'dag/vim-fish',
+    -- 'hashivim/vim-terraform',
+    -- 'uarun/vim-protobuf',
+    -- 'rust-lang/rust.vim',
+})
