@@ -45,7 +45,7 @@ vim.api.nvim_create_autocmd('BufEnter', {
     group = nvim_tree_augroup,
     pattern = '*',
     callback = function()
-        if #vim.api.nvim_list_wins() == 1 and require('nvim-tree.utils').is_nvim_tree_buf() then
+        if vim.fn.winnr('$') == 1 and require('nvim-tree.utils').is_nvim_tree_buf() then
             vim.cmd.quit()
         end
     end,
