@@ -115,12 +115,6 @@ local function delete_hidden_buffers()
 end
 vim.keymap.set('n', '<leader>dhb', delete_hidden_buffers)
 
--- diagnostics
-vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Go to previous diagnostic message' })
-vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'Go to next diagnostic message' })
-vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { desc = 'Open floating diagnostic message' })
-vim.keymap.set('n', '<leader>dl', vim.diagnostic.setloclist, { desc = "Open diagnostics list" })
-
 -- muscle memory
 vim.keymap.set({ 'n', 'i', 'v' }, '<left>', '<nop>')
 vim.keymap.set({ 'n', 'i', 'v' }, '<down>', '<nop>')
