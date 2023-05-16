@@ -13,6 +13,7 @@ treesitter_configs.setup({
         'gomod',
         'gosum',
         'lua',
+        'make',
         'proto',
         'python',
         'rust',
@@ -35,3 +36,15 @@ treesitter_configs.setup({
         disable = { 'css', 'python' },
     },
 })
+
+local parser_config = require("nvim-treesitter.parsers").get_parser_configs()
+parser_config.authzed = {
+    install_info = {
+        url = "https://github.com/mleonidas/tree-sitter-authzed",
+        files = { "src/parser.c" },
+        generate_requires_npm = false,
+        requires_generate_from_grammar = false,
+        branch = "main",
+    },
+    filetype = "authzed",
+}
