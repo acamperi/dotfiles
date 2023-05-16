@@ -50,6 +50,12 @@ vim.api.nvim_create_autocmd('BufEnter', {
 vim.keymap.set('n', '<leader>st', ':split +terminal<cr>i')
 vim.keymap.set('n', '<leader>vt', ':vsplit +terminal<cr>i')
 vim.keymap.set('t', '<leader><esc>', '<c-\\><c-n>')
+local autoresize_augroup = vim.api.nvim_create_augroup('autoresize', { clear = true })
+vim.api.nvim_create_autocmd('VimResized', {
+    group = autoresize_augroup,
+    pattern = '*',
+    command = 'tabdo wincmd ='
+})
 
 -- status line
 local lualine_ok, lualine = pcall(require, 'lualine')
