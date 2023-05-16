@@ -17,8 +17,6 @@ if not lazy_ok then
 end
 
 return lazy.setup({
-    'wbthomason/packer.nvim',
-
     -- editing
     'FooSoft/vim-argwrap',
     'jiangmiao/auto-pairs',
@@ -72,9 +70,8 @@ return lazy.setup({
 
     -- appearance
     'airblade/vim-gitgutter',
+    'nvim-lualine/lualine.nvim',
     'srcery-colors/srcery-vim',
-    'vim-airline/vim-airline',
-    'vim-airline/vim-airline-themes',
 
     -- treesitter
     { 'nvim-treesitter/nvim-treesitter', build = ':TSUpdate' },

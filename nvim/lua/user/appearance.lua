@@ -33,12 +33,6 @@ vim.api.nvim_create_autocmd('WinLeave', {
     callback = function() vim.opt_local.cursorline = false end,
 })
 
--- status line
-vim.g.airline_theme = 'simple'
-vim.g.airline_powerline_fonts = true
-vim.g.airline_section_b = ''
-vim.opt.showmode = false
-
 -- windows
 vim.opt.splitright = true
 vim.opt.splitbelow = true
@@ -56,3 +50,20 @@ vim.api.nvim_create_autocmd('BufEnter', {
 vim.keymap.set('n', '<leader>st', ':split +terminal<cr>i')
 vim.keymap.set('n', '<leader>vt', ':vsplit +terminal<cr>i')
 vim.keymap.set('t', '<leader><esc>', '<c-\\><c-n>')
+
+-- status line
+local lualine_ok, lualine = pcall(require, 'lualine')
+if not lualine_ok then
+    return
+end
+lualine.setup({
+    options = {
+        theme = 'auto',
+    },
+    sections = {
+        lualine_b = { 'diagnostics' },
+        lualine_c = { { 'filename', path = 1 } },
+        lualine_x = { 'filetype' },
+    },
+})
+vim.opt.showmode = false
