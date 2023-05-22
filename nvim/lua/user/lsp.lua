@@ -82,6 +82,10 @@ mason_lspconfig.setup_handlers({
     end,
 })
 
+vim.keymap.set('n', '[q', ':cprevious<cr>', { desc = 'Go to previous quickfix error' })
+vim.keymap.set('n', ']q', ':cnext<cr>', { desc = 'Go to next quickfix error' })
+vim.keymap.set('n', '[l', ':cprevious<cr>', { desc = 'Go to previous locationlist error' })
+vim.keymap.set('n', ']l', ':cnext<cr>', { desc = 'Go to next locationlist error' })
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Go to previous diagnostic message' })
 vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'Go to next diagnostic message' })
 vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { desc = 'Open floating diagnostic message' })

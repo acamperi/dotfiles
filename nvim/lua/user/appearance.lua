@@ -57,6 +57,11 @@ vim.api.nvim_create_autocmd('VimResized', {
     command = 'tabdo wincmd ='
 })
 
+-- tabs
+vim.keymap.set('n', '<leader>tn', ':tabnew<cr>', { desc = 'Open new tab' })
+vim.keymap.set('n', '[t', ':tabprevious<cr>', { desc = 'Go to previous tab' })
+vim.keymap.set('n', ']t', ':tabnext<cr>', { desc = 'Go to next tab' })
+
 -- status line
 local lualine_ok, lualine = pcall(require, 'lualine')
 if not lualine_ok then
