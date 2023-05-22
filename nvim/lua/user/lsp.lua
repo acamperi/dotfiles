@@ -64,7 +64,12 @@ local server_settings = {
     terraformls = {},
     tsserver = {},
     vimls = {},
-    yamlls = {},
+    yamlls = {
+        yaml = {
+            format = { enable = true },
+            keyOrdering = false,
+        },
+    },
 }
 
 mason.setup()
