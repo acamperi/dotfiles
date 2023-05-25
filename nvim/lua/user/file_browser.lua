@@ -5,17 +5,7 @@ end
 
 local api = require('nvim-tree.api')
 
-local on_attach = function(bufnr)
-    api.config.mappings.default_on_attach(bufnr)
-    vim.keymap.set('n', '<c-s>', api.node.open.horizontal, {
-        desc = 'nvim-tree: Open: Horizontal Split',
-        buffer = bufnr,
-        silent = true,
-    })
-end
-
 nvimtree.setup({
-    on_attach = on_attach,
     view = {
         width = 40,
     },

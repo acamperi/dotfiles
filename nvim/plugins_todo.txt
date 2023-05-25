@@ -4,7 +4,6 @@ https://github.com/nvim-telescope/telescope-ui-select
 https://github.com/nvim-telescope/telescope-file-browser.nvim
 https://github.com/jose-elias-alvarez/null-ls.nvim
 https://alpha2phi.medium.com/neovim-for-beginners-lsp-using-null-ls-nvim-bd954bf86b40
-https://github.com/folke/trouble.nvim
 https://github.com/mfussenegger/nvim-dap
 https://github.com/rcarriga/nvim-dap-ui
 https://github.com/jay-babu/mason-nvim-dap.nvim

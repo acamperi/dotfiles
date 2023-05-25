@@ -59,13 +59,16 @@ return lazy.setup({
         dependencies = { 'nvim-lua/plenary.nvim' },
     },
     { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
+    {
+        'folke/trouble.nvim',
+        dependencies = { 'nvim-tree/nvim-web-devicons' },
+        opts = {},
+    },
 
     -- file browser
     {
         'nvim-tree/nvim-tree.lua',
-        requires = {
-            'nvim-tree/nvim-web-devicons',
-        },
+        dependencies = { 'nvim-tree/nvim-web-devicons' },
     },
 
     -- appearance
