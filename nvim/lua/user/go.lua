@@ -1,6 +1,6 @@
 vim.g.go_fmt_command = 'gofmt'
 vim.g.go_imports_mode = 'goimports'
-vim.g.go_fmt_autosave = true
+vim.g.go_fmt_autosave = false
 vim.g.go_imports_autosave = false
 vim.g.go_jump_to_error = false
 vim.g.go_metalinter_autosave = false
