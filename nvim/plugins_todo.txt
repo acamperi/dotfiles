@@ -9,5 +9,4 @@ https://github.com/rcarriga/nvim-dap-ui
 https://github.com/jay-babu/mason-nvim-dap.nvim
 https://github.com/leoluz/nvim-dap-go
 https://github.com/ray-x/go.nvim
-https://github.com/rcarriga/nvim-notify
 https://github.com/navarasu/onedark.nvim
