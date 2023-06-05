@@ -13,7 +13,7 @@ nvimtree.setup({
         custom = { '^\\.git', '^\\.idea' },
     },
     git = {
-        timeout = 1500,
+        timeout = 5000,
     },
 })
 
