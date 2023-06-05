@@ -97,6 +97,7 @@ vim.opt.autowrite = true
 vim.opt.swapfile = false
 vim.opt.backup = false
 vim.opt.hidden = true
+vim.opt.switchbuf = 'useopen,uselast'
 vim.keymap.set('n', '<leader>w', ':write<cr>')
 local function delete_hidden_buffers()
     local open_bufs = {}
