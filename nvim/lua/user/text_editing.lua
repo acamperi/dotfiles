@@ -11,7 +11,8 @@ vim.opt.undofile = true
 vim.opt.undodir = os.getenv('HOME') .. '/.config/vim/tmp/undo/'
 
 -- folding
-vim.opt.foldmethod = 'syntax'
+vim.opt.foldmethod = 'expr'
+vim.opt.foldexpr = 'nvim_treesitter#foldexpr()'
 vim.opt.foldnestmax = 1
 
 -- wrapping
