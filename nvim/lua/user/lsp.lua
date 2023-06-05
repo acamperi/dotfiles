@@ -116,3 +116,6 @@ mason_lspconfig.setup_handlers({
         })
     end,
 })
+
+-- disable LSP logging, otherwise it grows indefinitely
+vim.lsp.set_log_level("off")
