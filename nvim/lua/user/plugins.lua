@@ -78,7 +78,8 @@ return lazy.setup({
         'rcarriga/nvim-notify',
         config = function() vim.notify = require('notify') end,
     },
-    'srcery-colors/srcery-vim',
+    'ribru17/bamboo.nvim',
+    -- 'srcery-colors/srcery-vim',
 
     -- treesitter
     { 'nvim-treesitter/nvim-treesitter', build = ':TSUpdate' },

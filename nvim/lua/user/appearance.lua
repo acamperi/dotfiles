@@ -10,7 +10,7 @@ vim.opt.lazyredraw = true
 -- color scheme
 vim.g.background = 'dark'
 vim.g.srcery_italic = true
-local colorscheme = 'srcery'
+local colorscheme = 'bamboo'
 local colorscheme_ok, _ = pcall(vim.cmd, 'colorscheme ' .. colorscheme)
 if not colorscheme_ok then
     vim.notify('colorscheme ' .. colorscheme .. ' not found!')
