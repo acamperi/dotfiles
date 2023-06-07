@@ -74,6 +74,7 @@ return lazy.setup({
     -- appearance
     'airblade/vim-gitgutter',
     'nvim-lualine/lualine.nvim',
+    'onsails/lspkind.nvim',
     {
         'rcarriga/nvim-notify',
         config = function() vim.notify = require('notify') end,

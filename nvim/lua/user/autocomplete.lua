@@ -8,6 +8,11 @@ if not luasnip_ok then
     return
 end
 
+local lspkind_ok, lspkind = pcall(require, 'lspkind')
+if not lspkind_ok then
+    return
+end
+
 require("luasnip.loaders.from_vscode").lazy_load()
 
 cmp.setup({
@@ -15,6 +20,22 @@ cmp.setup({
         expand = function(args)
             luasnip.lsp_expand(args.body)
         end,
+    },
+    window = {
+        completion = cmp.config.window.bordered(),
+        documentation = cmp.config.window.bordered(),
+    },
+    formatting = {
+        fields = { 'kind', 'abbr', 'menu' },
+        format = lspkind.cmp_format({
+            mode = 'symbol_text',
+            menu = {
+                nvim_lsp = '[LSP]',
+                luasnip = '[Snippet]',
+                buffer = '[Buffer]',
+                path = '[Path]',
+            },
+        }),
     },
     mapping = cmp.mapping.preset.insert({
         ['<c-b>'] = cmp.mapping(cmp.mapping.scroll_docs(-4), { 'i', 'c' }),
