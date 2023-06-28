@@ -17,7 +17,19 @@ end
 nvimtree.setup({
     on_attach = on_attach,
     view = {
-        width = 40,
+        float = {
+            enable = true,
+            open_win_config = {
+                border = 'rounded',
+                width = 80,
+                height = vim.opt.lines:get() - vim.opt.cmdheight:get() - 3,
+            },
+        },
+    },
+    renderer = {
+        indent_markers = {
+            enable = true,
+        },
     },
     filters = {
         custom = { '^\\.git', '^\\.idea' },
@@ -37,7 +49,7 @@ local nvim_tree_augroup = vim.api.nvim_create_augroup('nvim_tree', { clear = tru
 vim.api.nvim_create_autocmd('VimEnter', {
     group = nvim_tree_augroup,
     pattern = '*',
-    callback = function() api.tree.toggle({ focus = false }) end,
+    callback = function() api.tree.toggle() end,
 })
 
 -- close neovim if nvim-tree is the last open window
