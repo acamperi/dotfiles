@@ -34,8 +34,9 @@ vim.opt.splitright = true
 vim.opt.splitbelow = true
 vim.keymap.set('n', '<leader>q', ':q<cr>')
 for _, d in ipairs({ 'h', 'j', 'k', 'l' }) do
-    vim.keymap.set('n', '<c-' .. d .. '>', '<c-w>' .. d, { silent = true })
-    vim.keymap.set({ 'i', 't' }, '<c-' .. d .. '>', '<c-\\><c-n><c-w>' .. d, { silent = true })
+    -- vim.keymap.set('n', '<c-' .. d .. '>', '<c-w>' .. d, { silent = true })
+    vim.keymap.set({ 'i', 't' }, '<c-w>' .. d, '<c-\\><c-n><c-w>' .. d, { silent = true })
+    vim.keymap.set({ 'i', 't' }, '<c-w><c-' .. d .. '>', '<c-\\><c-n><c-w>' .. d, { silent = true })
 end
 local terminsert_augroup = vim.api.nvim_create_augroup('terminsert', { clear = true })
 vim.api.nvim_create_autocmd('BufEnter', {
