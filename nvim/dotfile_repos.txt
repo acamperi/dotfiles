@@ -1,0 +1,8 @@
+https://github.com/nicknisi/dotfiles/tree/main/config/nvim
+https://github.com/spf13/spf13-vim/blob/3.0/.vimrc
+https://github.com/jesseleite/dotfiles/tree/master/vim
+https://github.com/himmAllRight/dotfiles/tree/master/vim
+https://github.com/ayoisaiah/dotfiles/tree/master/private_dot_config/nvim
+https://github.com/tjdevries/config_manager/tree/master/xdg_config/nvim
+https://github.com/VonHeikemen/dotfiles/tree/master/my-configs/neovim
+https://github.com/Bekaboo/nvim
