@@ -4,6 +4,13 @@
 /usr/local/bin/brew shellenv | source
 
 
+###########################
+### too many open files ###
+###########################
+
+ulimit -n 8192
+
+
 ############
 ### rust ###
 ############
