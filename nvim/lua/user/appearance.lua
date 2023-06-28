@@ -17,10 +17,6 @@ if not colorscheme_ok then
 end
 
 -- cursor
--- TODO: fix these
--- vim.api.nvim_set_var('&t_SI', '\<Esc>[6 q')
--- vim.api.nvim_set_var('&t_SR', '\<Esc>[4 q')
--- vim.api.nvim_set_var('&t_EI', '\<Esc>[2 q')
 local cursor_line_augroup = vim.api.nvim_create_augroup('cursor_line', { clear = true })
 vim.api.nvim_create_autocmd({ 'VimEnter', 'WinEnter', 'BufWinEnter' }, {
     group = cursor_line_augroup,

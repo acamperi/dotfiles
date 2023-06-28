@@ -45,22 +45,24 @@ telescope.setup({
     defaults = {
         mappings = {
             i = {
-                ['<c-x>'] = telescope_actions.select_horizontal,
+                ['<c-s>'] = telescope_actions.select_horizontal,
+                ['<c-v>'] = telescope_actions.select_vertical,
                 ['<c-t>'] = telescope_actions.select_tab,
                 ['<c-j>'] = telescope_actions.move_selection_next,
                 ['<c-k>'] = telescope_actions.move_selection_previous,
                 ['<c-b>'] = telescope_actions.preview_scrolling_up,
                 ['<c-f>'] = telescope_actions.preview_scrolling_down,
-                ['<c-X>'] = trouble.open_with_trouble,
+                ['<c-x>'] = trouble.open_with_trouble,
             },
             n = {
-                ['<c-x>'] = telescope_actions.select_horizontal,
+                ['<c-s>'] = telescope_actions.select_horizontal,
+                ['<c-v>'] = telescope_actions.select_vertical,
                 ['<c-t>'] = telescope_actions.select_tab,
                 ['<c-j>'] = telescope_actions.move_selection_next,
                 ['<c-k>'] = telescope_actions.move_selection_previous,
                 ['<c-b>'] = telescope_actions.preview_scrolling_up,
                 ['<c-f>'] = telescope_actions.preview_scrolling_down,
-                ['<c-X>'] = trouble.open_with_trouble,
+                ['<c-x>'] = trouble.open_with_trouble,
             },
         },
     },
