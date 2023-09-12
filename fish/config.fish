@@ -22,9 +22,9 @@ set -gx PATH ~/.cargo/bin $PATH
 ### go ###
 ##########
 set -gx GOPATH ~/.go
-set -gx GOROOT /usr/local/opt/go/libexec
+# set -gx GOROOT /usr/local/opt/go@1.18/libexec
 set -gx GOPRIVATE "gitlab.com/levelbenefits/*"
-set -gx PATH $GOPATH/bin $GOROOT/bin $PATH
+set -gx PATH $GOPATH/bin $PATH
 
 
 ##############

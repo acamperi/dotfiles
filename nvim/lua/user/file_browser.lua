@@ -46,6 +46,7 @@ vim.keymap.set('n', '<leader>nf', function() api.tree.find_file({ open = true, f
 local nvim_tree_augroup = vim.api.nvim_create_augroup('nvim_tree', { clear = true })
 
 -- open nvim-tree on start-up without focus
+-- TODO: don't open for commit messages, maybe don't open at all on start-up?
 vim.api.nvim_create_autocmd('VimEnter', {
     group = nvim_tree_augroup,
     pattern = '*',

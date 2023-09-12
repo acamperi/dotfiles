@@ -20,11 +20,11 @@ vim.opt.wrap = true
 vim.opt.linebreak = true
 vim.opt.textwidth = 0
 local wrapping_augroup = vim.api.nvim_create_augroup('wrapping', { clear = true })
-vim.api.nvim_create_autocmd('FileType', {
-    group = wrapping_augroup,
-    pattern = 'proto',
-    callback = function() vim.opt_local.textwidth = 100 end,
-})
+-- vim.api.nvim_create_autocmd('FileType', {
+--     group = wrapping_augroup,
+--     pattern = 'proto',
+--     callback = function() vim.opt_local.textwidth = 100 end,
+-- })
 vim.api.nvim_create_autocmd('FileType', {
     group = wrapping_augroup,
     pattern = 'go',

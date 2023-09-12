@@ -31,10 +31,46 @@ return lazy.setup({
         dependencies = {
             'williamboman/mason.nvim',
             'williamboman/mason-lspconfig.nvim',
-            { 'j-hui/fidget.nvim', opts = {} },
-            { 'folke/neodev.nvim', opts = {} },
+            { 'j-hui/fidget.nvim', config = true },
+            {
+                'folke/neodev.nvim',
+                opts = {
+                    library = { plugins = { 'neotest' }, types = true },
+                },
+                dependencies = {
+                    'nvim-neotest/neotest',
+                },
+            },
         },
     },
+
+    -- testing
+    -- {
+    --     'nvim-neotest/neotest',
+    --     dependencies = {
+    --         'nvim-lua/plenary.nvim',
+    --         'nvim-treesitter/nvim-treesitter',
+    --         'antoinemadec/FixCursorHold.nvim',
+    --         'nvim-neotest/neotest-go',
+    --     },
+    --     config = function()
+    --         local neotest_ns = vim.api.nvim_create_namespace('neotest')
+    --         vim.diagnostic.config({
+    --             virtual_text = {
+    --                 format = function(diagnostic)
+    --                     return diagnostic.message:gsub('\n', ' '):gsub('\t', ' '):gsub('%s+', ' '):gsub('^%s+', '')
+    --                 end,
+    --             },
+    --         }, neotest_ns)
+    --         require('neotest').setup({
+    --             adapters = {
+    --                 require('neotest-go')({
+    --                     args = { '-timeout=120s' },
+    --                 }),
+    --             },
+    --         })
+    --     end,
+    -- },
 
     -- autocomplete
     {
@@ -88,8 +124,8 @@ return lazy.setup({
     -- Git
     'tpope/vim-fugitive',
 
-    -- language-specific plugins
-    { 'fatih/vim-go',                    build = ':GoUpdateBinaries' },
+    -- legacy
+    -- { 'fatih/vim-go',                    build = ':GoUpdateBinaries' },
     -- 'dag/vim-fish',
     -- 'hashivim/vim-terraform',
     -- 'uarun/vim-protobuf',
