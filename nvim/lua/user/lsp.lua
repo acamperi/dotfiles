@@ -50,7 +50,7 @@ local on_attach = function(client, bufnr)
         vim.api.nvim_create_autocmd('BufWritePre', {
             group = lsp_augroup,
             buffer = bufnr,
-            callback = function() vim.lsp.buf.format({ timeout_ms = 5000 }) end,
+            callback = function() vim.lsp.buf.format({ timeout_ms = 10000 }) end,
         })
     elseif client.server_capabilities.documentFormattingProvider then
         vim.api.nvim_create_autocmd('BufWritePre', {
