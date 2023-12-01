@@ -31,7 +31,7 @@ local on_attach = function(client, bufnr)
 
     nmap('<leader>rn', vim.lsp.buf.rename, '[R]e[n]ame')
     nmap('<leader>ca', vim.lsp.buf.code_action, '[C]ode [A]ction')
-    nmap('gd', vim.lsp.buf.definition, '[G]oto [D]efinition')
+    nmap('gd', '<cmd>TroubleToggle lsp_definitions<cr>', '[G]oto [D]efinitions')
     nmap('gsd', ':split | lua vim.lsp.buf.definition()<cr>', '[G]oto [D]efinition in [S]plit')
     nmap('gvd', ':vsplit | lua vim.lsp.buf.definition()<cr>', '[G]oto [D]efinition in [V]ertical split')
     nmap('gr', '<cmd>TroubleToggle lsp_references<cr>', '[G]oto [R]eferences')
