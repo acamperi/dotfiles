@@ -7,7 +7,6 @@
 ###########################
 ### too many open files ###
 ###########################
-
 ulimit -n 8192
 
 
@@ -180,15 +179,42 @@ abbr -a tf 'terraform'
 abbr -a tfi 'terraform init'
 abbr -a tfp 'terraform plan'
 abbr -a tfa 'terraform apply'
-abbr -a awssso 'sourcesh '$LEVEL_REPO_ROOT'/sre/aws/aws_cli_sso.sh'
-abbr -a k8sadmin 'sourcesh '$LEVEL_REPO_ROOT'/sre/aws/aws_k8s_admin.sh'
-abbr -a k8sbase 'sourcesh '$LEVEL_REPO_ROOT'/sre/aws/aws_k8s_base.sh'
-function local_k8s
-    set -ge KUBECONFIG
-    kubectl config set-context minikube --namespace=local
-end
-function prod_k8s
-    set -gx KUBECONFIG ~/code/level/k8s/clusters.yaml
-end
+set -gx KUBECONFIG ~/.kube/config:$LEVEL_REPO_ROOT/k8s/clusters.yaml
 abbr -a tm 'sh ~/dotfiles/scripts/init_level_tmux.sh'
 if [ -f '/usr/local/bin/google-cloud-sdk/path.fish.inc' ]; . '/usr/local/bin/google-cloud-sdk/path.fish.inc'; end
+function kctl
+    if test (string match -r '^'$LEVEL_REPO_ROOT'.*$' $PWD)
+        if test -f $LEVEL_REPO_ROOT'/bazel-bin/kubectl'
+            $LEVEL_REPO_ROOT/bazel-bin/kubectl $argv
+        else
+            bazel run //:kubectl -- $argv
+        end
+    else
+        kubectl $argv
+    end
+end
+abbr kdev 'kctl --context admin-dev'
+abbr kdevqa 'kctl --context admin-devqa'
+abbr kstaging 'kctl --context admin-staging'
+abbr kprod 'kctl --context admin-prod'
+abbr kcanary 'kctl --context admin-canary'
+function kz
+    if test (string match -r '^'$LEVEL_REPO_ROOT'.*$' $PWD)
+        if test -f $LEVEL_REPO_ROOT'/bazel-bin/kustomize'
+            $LEVEL_REPO_ROOT/bazel-bin/kustomize $argv
+        else
+            bazel run //:kustomize -- $argv
+        end
+    else
+        kustomize $argv
+    end
+end
+function kzbuild
+    kz build --load-restrictor=LoadRestrictionsNone $argv
+end
+function tfswitch_on_pwd_change --on-variable PWD
+    if test -f 'main.tf' && rg 'backend "' *.tf &>/dev/null
+        tfswitch
+    end
+end
+eksctl completion fish > ~/.config/fish/completions/eksctl.fish
